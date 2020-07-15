@@ -10,7 +10,7 @@ include('../../banco/conexao.php');
     }else
 
     $requestaData = $_REQUEST
-    
+
     
     if(empty($requestaData['nome']) || empty($requestaData['ativo']) ){
         $dados = array(

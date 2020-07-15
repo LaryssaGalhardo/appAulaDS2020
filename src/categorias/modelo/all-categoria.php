@@ -28,4 +28,4 @@
                 "dados" => array ());
     }
 echo  json_encode ( $dados , JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
- ggggg
+ 
