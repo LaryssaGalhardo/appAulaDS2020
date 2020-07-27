@@ -5,23 +5,23 @@ $(document).ready(function() {
         $('.modal-title').empty()
         $('.modal-body').empty()
 
-        $('.modal-title').append('Adicionar nova categoria')
+        $('.modal-title').append('Adicionar novo cliente')
 
         const datacriacao = new Date().toLocaleString()
 
-        $('.modal-body').load('src/categorias/visao/form-categoria.html', function() {
+        $('.modal-body').load('src/clientes/visao/form-cliente.html', function() {
             $('#dataagora').val(datacriacao)
         })
 
         $('.btn-save').show()
         $('.btn-update').hide()
 
-        $('#modal-categoria').modal('show')
+        $('#modal-cliente').modal('show')
     })
     $('.btn-save').click(function(e) {
         e.preventDefault()
 
-        let dados = $('#form-categoria').serialize()
+        let dados = $('#form-cliente').serialize()
 
         $('input[type=checkbox]').each(function() {
             if (!this.checked) {
@@ -34,7 +34,7 @@ $(document).ready(function() {
             dataType: 'json',
             assync: true,
             data: dados,
-            url: 'src/categorias/modelo/create-categoria.php',
+            url: 'src/cliente/modelo/create-cliente.php',
             success: function(dados) {
                 Swal.fire({
                     title: 'appAulaDS',
@@ -43,8 +43,8 @@ $(document).ready(function() {
                     confirmButtonText: 'OK'
                 })
 
-                $('#modal-categoria').modal('hide')
-                $('#table-categoria').DataTable().ajax.reload()
+                $('#modal-cliente').modal('hide')
+                $('#table-cliente').DataTable().ajax.reload()
             }
         })
     })
