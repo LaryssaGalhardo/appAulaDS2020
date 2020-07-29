@@ -21,13 +21,7 @@ $(document).ready(function() {
     $('.btn-save').click(function(e) {
         e.preventDefault()
 
-        let dados = $('#form-categoria').serialize()
-
-        $('input[type=checkbox]').each(function() {
-            if (!this.checked) {
-                dados += '&' + this.name + '=off'
-            }
-        })
+        let dados = $('#form-categoria').serialize();
 
         $.ajax({
             type: 'POST',

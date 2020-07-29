@@ -9,7 +9,7 @@ include('../../banco/conexao.php');
         );
     }else
 
-    $requestaData = $_REQUEST
+    $requestaData = $_REQUEST;
 
     
     if(empty($requestaData['nome']) || empty($requestaData['ativo']) ){
@@ -20,17 +20,16 @@ include('../../banco/conexao.php');
 } else {
     //$requestaData = array_map('utf8_decode', $requestaData);
 
-    $requestaData['ativo'] = $requestaData['ativo'] == "on" ? "S" : "N";
 
     $requestaData['datacriacao'] = date('Y-d-m H:i:s', strtotime($requestaData['dataagora']));
     $sqlComando = "INSERT INTO CATEGORIAS(nome, ativo, datacriacao, datamodificacao
     VALUES('$requestaData[nome]', '$requestaData[ativo]', '$requestaData[dataagora]',
      '$requestaData[dataagora]')";
 
-     $resultado = msqli_query($conexao, $sqlComando);
+     $resultado = mysqli_query($conexao, $sqlComando);
 
      if($resultado){
-         $dados = array{
+         $dados = array(
              'tipo' => 'success',
              'mensagem' => 'Categoria criada com sucesso'
          }else{
@@ -39,11 +38,11 @@ include('../../banco/conexao.php');
                 'mensagem' => 'Não foi possivel criar a categoria' 
          }
      }
-     mysqli_close($conexao)
-}
+    );
+     mysqli_close($conexao){
+};
 
 
 
 $dadis = array_map('utf8_dencode', $dados);
-echo json_encode($dados);
  
